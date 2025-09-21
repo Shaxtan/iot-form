@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-y: auto;
+    background: linear-gradient(to bottom, #cce7ff, #f0f8ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    padding: 60px 50px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.form-icon {
+   
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-image {
+    width: 200px; 
+    height: auto; 
+}
+
+.form-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.form-field-group {
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 92%;
+}
+
+.form-card input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.form-card input:focus {
+    outline: none;
+    border-color: #1e90ff;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+}
+
+.form-card button {
+    width: 100%;
+    padding: 14px;
+    background-color: #1e90ff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    margin-top: 25px;
+}
+
+.form-card button:hover {
+    background-color: #1c86ee;
+    transform: translateY(-2px);
+}
