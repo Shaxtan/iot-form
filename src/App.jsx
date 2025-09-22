@@ -163,7 +163,6 @@ export default function VehicleForm() {
               placeholder="Min Voltage"
               required
               // required
-
             />
             <input
               type="number"
@@ -172,77 +171,84 @@ export default function VehicleForm() {
               onChange={handleChange}
               placeholder="Max Voltage"
               required
-
             />
-            <select
+           <select
   name="powStatus"
   value={formData.powStatus || ""}
   onChange={handleChange}
-  style={{ width: "491px", padding: "6px" }} // increase width + padding
+  style={{
+    width: "491px",
+    padding: "10px 12px",   // increases inner spacing vertically
+    height: "45px",          // sets explicit height
+    fontSize: "16px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    outline: "none",
+  }}
 >
   <option value="">Select Power Status</option>
   <option value="true">True</option>
   <option value="false">False</option>
 </select>
 
-           <div style={{ display: "flex", gap: "50px", marginBottom: "20px" }}>
-  <label
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      fontWeight: "600",
-      fontSize: "14px",
-      color: "#333",
-      flex: 1,
-    }}
-  >
-    Start Date:
-    <input
-      type="datetime-local"
-      name="startDate"
-      value={formData.startDate}
-      onChange={handleChange}
-      required
-      style={{
-        marginTop: "6px",
-        padding: "8px 10px",
-        borderRadius: "6px",
-        border: "1px solid #ccc",
-        fontSize: "14px",
-        outline: "none",
-      }}
-    />
-  </label>
 
-  <label
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      fontWeight: "600",
-      fontSize: "14px",
-      color: "#333",
-      flex: 1,
-    }}
-  >
-    End Date:
-    <input
-      type="datetime-local"
-      name="endDate"
-      value={formData.endDate}
-      onChange={handleChange}
-      required
-      style={{
-        marginTop: "6px",
-        padding: "8px 10px",
-        borderRadius: "6px",
-        border: "1px solid #ccc",
-        fontSize: "14px",
-        outline: "none",
-      }}
-    />
-  </label>
-</div>
+            <div style={{ display: "flex", gap: "50px", marginBottom: "20px" , marginLeft: "20px"}}>
+              <label
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  color: "#333",
+                  flex: 1,
+                }}
+              >
+                Start Date:
+                <input
+                  type="datetime-local"
+                  name="startDate"
+                  value={formData.startDate}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    marginTop: "6px",
+                    padding: "8px 10px",
+                    borderRadius: "6px",
+                    border: "1px solid #ccc",
+                    fontSize: "14px",
+                    outline: "none",
+                  }}
+                />
+              </label>
 
+              <label
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  color: "#333",
+                  flex: 1,
+                }}
+              >
+                End Date:
+                <input
+                  type="datetime-local"
+                  name="endDate"
+                  value={formData.endDate}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    marginTop: "6px",
+                    padding: "8px 10px",
+                    borderRadius: "6px",
+                    border: "1px solid #ccc",
+                    fontSize: "14px",
+                    outline: "none",
+                  }}
+                />
+              </label>
+            </div>
           </div>
           <button type="submit">Download</button>
         </form>
