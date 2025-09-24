@@ -1,0 +1,81 @@
+/* src/App.css */
+
+/* 1. Reset default browser margins */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f0f2f5; /* A light, modern background color for the body */
+}
+
+/* 2. Modern Navbar Styling */
+.navbar {
+  /* Background and Shadow */
+background: linear-gradient(135deg, #333333 0%, #5a5a5a 100%);  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* A soft shadow for depth */
+  
+  /* Position and Layout */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  
+  /* Flexbox for centering links */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Spacing */
+  padding: 1.2rem 2rem;
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 3rem; /* Increased space between links */
+}
+
+.nav-links li {
+  /* No need for display: inline; when using flexbox on the parent */
+}
+
+/* 3. Modern Link Styling */
+.nav-links a {
+  color: #ffffff; /* Pure white text */
+  text-decoration: none;
+  font-size: 1.1rem; /* Slightly smaller font size */
+  font-weight: 500; /* Regular font weight */
+  
+  /* Transition for smooth hover effect */
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  
+  /* Visual cue for clickable elements */
+  cursor: pointer;
+  position: relative; /* Needed for the underline effect */
+}
+
+/* 4. Underline Hover Effect */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ffffff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* 5. Adjust main content for fixed navbar */
+.content-wrapper {
+  padding-top: 5rem; /* Adjust based on new navbar height */
+}
