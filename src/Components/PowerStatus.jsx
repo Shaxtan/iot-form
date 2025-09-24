@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "../Components/VehicleForm.css";
+import "../Components/VehicleForm.css"; // Reuse the same CSS for consistent styling
 import vehicleIcon from "../assets/logo.jpg";
 
-export default function VehicleForm() {
+export default function PowerStatus() {
   const [formData, setFormData] = useState({
     vehicleNumber: "",
     imei: "",
@@ -12,7 +12,7 @@ export default function VehicleForm() {
     endDate: "",
     powStatus: "",
   });
-  const [apiResponse, setApiResponse] = useState([]); // should be array, not null
+  const [apiResponse, setApiResponse] = useState([]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -103,14 +103,14 @@ export default function VehicleForm() {
       imei: formData.imei,
       vehnum: formData.vehicleNumber,
       powStatus: formData.powStatus || "",
-      minLoad: Number(formData.minVoltage),
-      maxLoad: Number(formData.maxVoltage),
+      // minLoad: Number(formData.minVoltage) === 0 ? null : Number(formData.minVoltage),
+      // maxLoad: Number(formData.maxVoltage) === 0 ? null : Number(formData.maxVoltage),
       startDate: new Date(formData.startDate).toISOString(),
       endDate: new Date(formData.endDate).toISOString(),
     };
 
     try {
-      const res = await fetch("http://103.20.214.173:8080/core/vehicle-info", {
+      const res = await fetch("http://103.20.214.173:8080/core/power-status", {
         method: "POST",
         headers: { "Content-Type": "application/json", accept: "*/*" },
         body: JSON.stringify(payload),
@@ -119,8 +119,8 @@ export default function VehicleForm() {
       const data = await res.json();
 
       if (data && data.data) {
-        setApiResponse(data.data); // <-- only store array
-        handleExportCSV(data.data); // <-- export directly with response array
+        setApiResponse(data.data);
+        handleExportCSV(data.data);
       } else {
         alert("No data found from API");
       }
@@ -133,10 +133,10 @@ export default function VehicleForm() {
   return (
     <div className="form-container">
       <div className="form-card">
-        <div className="form-icon">
+        {/* <div className="form-icon">
           <img src={vehicleIcon} alt="Vehicle Icon" className="icon-image" />
-        </div>
-        <h2 className="form-title">Register Vehicle</h2>
+        </div> */}
+        <h2 className="form-title">Power Status</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-field-group">
             <input
@@ -145,7 +145,6 @@ export default function VehicleForm() {
               value={formData.vehicleNumber}
               onChange={handleChange}
               placeholder="Vehicle Number"
-              // required
             />
             <input
               type="text"
@@ -153,15 +152,13 @@ export default function VehicleForm() {
               value={formData.imei}
               onChange={handleChange}
               placeholder="IMEI"
-              // Optional field, remove comment and add required if needed
             />
-            <input
+            {/* <input
               type="number"
               name="minVoltage"
               value={formData.minVoltage}
               onChange={handleChange}
               placeholder="Min Voltage"
-              required
               // required
             />
             <input
@@ -170,16 +167,16 @@ export default function VehicleForm() {
               value={formData.maxVoltage}
               onChange={handleChange}
               placeholder="Max Voltage"
-              required
-            />
+              // required
+            /> */}
             <select
               name="powStatus"
               value={formData.powStatus || ""}
               onChange={handleChange}
               style={{
-                width: "490px",
-                padding: "10px 12px", // increases inner spacing vertically
-                height: "45px", // sets explicit height
+                width: "491px",
+                padding: "10px 12px",
+                height: "45px",
                 fontSize: "16px",
                 borderRadius: "8px",
                 border: "1px solid #ccc",
@@ -258,148 +255,7 @@ export default function VehicleForm() {
           </div>
           <button type="submit">Download</button>
         </form>
-        {/* {apiResponse && (
-          <div className="api-response">
-            <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
-          </div>
-        )} */}
       </div>
     </div>
   );
 }
-
-// import { useState } from "react";
-// import "./VehicleForm.css";
-// import vehicleIcon from "./assets/logo.jpg";
-
-// export default function VehicleForm() {
-//   const [formData, setFormData] = useState({
-//     vehicleNumber: "",
-//     imei: "",
-//     minVoltage: "",
-//     maxVoltage: "",
-//     startDate: "",
-//     endDate: "",
-//     powStatus: ""
-//   });
-//   const [apiResponse, setApiResponse] = useState(null);
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     // Map form fields to API payload
-//     const payload = {
-//       imei: formData.imei,
-//       vehnum: formData.vehicleNumber,
-//       powStatus: "",
-//       minLoad: Number(formData.minVoltage),
-//       maxLoad: Number(formData.maxVoltage),
-//       startDate: new Date(formData.startDate).toISOString(),
-//       endDate: new Date(formData.endDate).toISOString(),
-//     };
-
-//     try {
-//       const res = await fetch("http://103.20.214.173:8080/core/vehicle-info", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json", accept: "*/*" },
-//         body: JSON.stringify(payload),
-//       });
-//       const data = await res.json();
-//       setApiResponse(data);
-//       alert("Form submitted successfully!"); // Optional, keep or remove
-//     } catch (err) {
-//       setApiResponse({ error: err.message });
-//       alert("Error submitting form: " + err.message);
-//     }
-//   };
-
-//   return (
-//     <div className="form-container">
-//       <div className="form-card">
-//         <div className="form-icon">
-//           <img src={vehicleIcon} alt="Vehicle Icon" className="icon-image" />
-//         </div>
-//         <h2 className="form-title">Register Vehicle</h2>
-//         <form onSubmit={handleSubmit}>
-//           <div className="form-field-group">
-//             <input
-//               type="text"
-//               name="vehicleNumber"
-//               value={formData.vehicleNumber}
-//               onChange={handleChange}
-//               placeholder="Vehicle Number"
-//               required
-//             />
-//             <input
-//               type="text"
-//               name="imei"
-//               value={formData.imei}
-//               onChange={handleChange}
-//               placeholder="IMEI"
-//               // required
-//             />
-//             <input
-//               type="number"
-//               name="minVoltage"
-//               value={formData.minVoltage}
-//               onChange={handleChange}
-//               placeholder="Min Voltage"
-//               required
-//               step="any"
-//             />
-//             <input
-//               type="number"
-//               name="maxVoltage"
-//               value={formData.maxVoltage}
-//               onChange={handleChange}
-//               placeholder="Max Voltage"
-//               required
-//               step="any"
-//             />
-//             <select
-//               name="powStatus"
-//               value={formData.powStatus || ""}
-//               onChange={handleChange}
-//               required
-//             >
-//               <option value="">Select Power Status</option>
-//               <option value="true">True</option>
-//               <option value="false">False</option>
-//             </select>
-//             <label>
-//               Start Date:
-//               <input
-//                 type="datetime-local"
-//                 name="startDate"
-//                 value={formData.startDate}
-//                 placeholder="Max Voltage"
-//                 onChange={handleChange}
-//                 required
-//               />
-//             </label>
-//             <label>
-//               End Date:
-//               <input
-//                 type="datetime-local"
-//                 name="endDate"
-//                 value={formData.endDate}
-//                 onChange={handleChange}
-//                 required
-//               />
-//             </label>
-//           </div>
-//           <button type="submit">Submit</button>
-//         </form>
-//         {apiResponse && (
-//           <div className="api-response">
-//             <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
