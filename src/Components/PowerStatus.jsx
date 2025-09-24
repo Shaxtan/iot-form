@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../Components/VehicleForm.css"; // Reuse the same CSS for consistent styling
 import vehicleIcon from "../assets/logo.jpg";
 
-export default function Form2() {
+export default function PowerStatus() {
   const [formData, setFormData] = useState({
     vehicleNumber: "",
     imei: "",
@@ -103,14 +103,14 @@ export default function Form2() {
       imei: formData.imei,
       vehnum: formData.vehicleNumber,
       powStatus: formData.powStatus || "",
-      minLoad: Number(formData.minVoltage),
-      maxLoad: Number(formData.maxVoltage),
+      // minLoad: Number(formData.minVoltage) === 0 ? null : Number(formData.minVoltage),
+      // maxLoad: Number(formData.maxVoltage) === 0 ? null : Number(formData.maxVoltage),
       startDate: new Date(formData.startDate).toISOString(),
       endDate: new Date(formData.endDate).toISOString(),
     };
 
     try {
-      const res = await fetch("http://103.20.214.173:8080/core/vehicle-info", {
+      const res = await fetch("http://103.20.214.173:8080/core/power-status", {
         method: "POST",
         headers: { "Content-Type": "application/json", accept: "*/*" },
         body: JSON.stringify(payload),
@@ -133,10 +133,10 @@ export default function Form2() {
   return (
     <div className="form-container">
       <div className="form-card">
-        <div className="form-icon">
+        {/* <div className="form-icon">
           <img src={vehicleIcon} alt="Vehicle Icon" className="icon-image" />
-        </div>
-        <h2 className="form-title">Form 2: Vehicle Information</h2>
+        </div> */}
+        <h2 className="form-title">Power Status</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-field-group">
             <input
@@ -153,13 +153,13 @@ export default function Form2() {
               onChange={handleChange}
               placeholder="IMEI"
             />
-            <input
+            {/* <input
               type="number"
               name="minVoltage"
               value={formData.minVoltage}
               onChange={handleChange}
               placeholder="Min Voltage"
-              required
+              // required
             />
             <input
               type="number"
@@ -167,8 +167,8 @@ export default function Form2() {
               value={formData.maxVoltage}
               onChange={handleChange}
               placeholder="Max Voltage"
-              required
-            />
+              // required
+            /> */}
             <select
               name="powStatus"
               value={formData.powStatus || ""}
@@ -193,7 +193,7 @@ export default function Form2() {
                 display: "flex",
                 gap: "50px",
                 marginBottom: "20px",
-                marginLeft: "20px",
+                marginLeft: "0px",
               }}
             >
               <label
