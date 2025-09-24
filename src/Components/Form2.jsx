@@ -193,7 +193,7 @@ export default function Form2() {
                 display: "flex",
                 gap: "50px",
                 marginBottom: "20px",
-                marginLeft: "20px",
+                marginLeft: "0px",
               }}
             >
               <label

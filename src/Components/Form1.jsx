@@ -172,27 +172,33 @@ export default function VehicleForm() {
               placeholder="Max Voltage"
               required
             />
-           <select
-  name="powStatus"
-  value={formData.powStatus || ""}
-  onChange={handleChange}
-  style={{
-    width: "491px",
-    padding: "10px 12px",   // increases inner spacing vertically
-    height: "45px",          // sets explicit height
-    fontSize: "16px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
-    outline: "none",
-  }}
->
-  <option value="">Select Power Status</option>
-  <option value="true">True</option>
-  <option value="false">False</option>
-</select>
+            <select
+              name="powStatus"
+              value={formData.powStatus || ""}
+              onChange={handleChange}
+              style={{
+                width: "490px",
+                padding: "10px 12px", // increases inner spacing vertically
+                height: "45px", // sets explicit height
+                fontSize: "16px",
+                borderRadius: "8px",
+                border: "1px solid #ccc",
+                outline: "none",
+              }}
+            >
+              <option value="">Select Power Status</option>
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
 
-
-            <div style={{ display: "flex", gap: "50px", marginBottom: "20px" , marginLeft: "20px"}}>
+            <div
+              style={{
+                display: "flex",
+                gap: "50px",
+                marginBottom: "20px",
+                marginLeft: "0px",
+              }}
+            >
               <label
                 style={{
                   display: "flex",

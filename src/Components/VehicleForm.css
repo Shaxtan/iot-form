@@ -44,7 +44,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 92%; /* This width might cause issues; I'll address this in the responsive code */
+    width: 98%; /* This width might cause issues; I'll address this in the responsive code */
 }
 
 .form-card input,
@@ -84,7 +84,7 @@ body {
     transform: translateY(-2px);
 }
 
-
+/* 
 @media (max-width: 600px) {
     .form-card {
         padding: 30px 20px;
@@ -113,4 +113,4 @@ body {
     .form-card button {
         padding: 12px;
     }
-}
+} */
