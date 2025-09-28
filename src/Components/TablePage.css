@@ -1,72 +1,100 @@
-/* Further Scaled-Up TablePage.css */
-
 .table-page {
     padding: 30px;
-    /* Maximizing width to take up almost the full screen width */
     max-width: 95%; 
     margin: 0 auto; 
+    overflow-x: auto; /* allows scrolling if table is wider than screen */
 }
 
 .data-table {
-    width: 100%;
+    width: 100%; /* make table stretch full width */
+    min-width: 800px; /* keep readability by preventing collapse */
     border-collapse: collapse;
     margin-top: 30px; 
-    /* Increased shadow for more depth */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
     background-color: #ffffff; 
-    border-radius: 10px; /* Slightly larger border radius */
+    border-radius: 10px;
     overflow: hidden; 
 }
 
+/* Table cells */
 .data-table th, .data-table td {
-    border: 1px solid #c0c0c0; /* Slightly darker border for definition */
-    /* Significant increase in cell padding for a roomier feel */
-    padding: 18px 25px; 
+    border: 1px solid #c0c0c0; 
+    padding: 14px 20px; /* slightly reduced padding for smaller screens */
     text-align: left;
-    font-size: 1.1rem; /* Larger font size for all text */
+    font-size: 1rem;
 }
 
+/* Table header */
 .data-table th {
-    background-color: #0056b3; /* Darker blue header for contrast */
+    background-color: #0056b3; 
     color: white;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 1.2rem; /* Header font even larger */
+    font-size: 1.1rem;
     letter-spacing: 0.5px;
 }
 
-/* Base row styling */
+/* Zebra striping */
 .data-table tr:nth-child(even) {
-    background-color: #eff3f8; /* Slightly more noticeable stripe */
+    background-color: #eff3f8;
 }
 
 .data-table tr:hover {
-    background-color: #dbe4ee; /* More distinct hover effect */
+    background-color: #dbe4ee;
     cursor: pointer;
 }
 
-/* STATUS STYLING - kept the colors consistent but bolded for impact */
-
+/* Status styling */
 .data-table td.ok {
-    color: #1e7e34; /* Darker green */
+    color: #1e7e34;
     background-color: #e6ffe9;
     font-weight: bold;
 }
 
 .data-table td.warning {
-    color: #d39e00; /* Darker orange */
+    color: #d39e00;
     background-color: #fffde6;
     font-weight: bold;
 }
 
 .data-table td.critical {
-    color: #c82333; /* Darker red */
+    color: #c82333;
     background-color: #fcebeb;
     font-weight: bold;
 }
 
 .data-table td.error {
-    color: #495057; /* Darker gray */
+    color: #495057;
     background-color: #f0f0f0;
     font-weight: bold;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1024px) {
+    .data-table th, .data-table td {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-page {
+        padding: 15px;
+    }
+
+    .data-table {
+        font-size: 0.9rem;
+        min-width: 600px; /* ensure scroll instead of squish */
+    }
+}
+
+@media (max-width: 480px) {
+    .data-table {
+        min-width: 500px;
+    }
+
+    .data-table th, .data-table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
 }
