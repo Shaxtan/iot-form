@@ -1,0 +1,72 @@
+/* Further Scaled-Up TablePage.css */
+
+.table-page {
+    padding: 30px;
+    /* Maximizing width to take up almost the full screen width */
+    max-width: 95%; 
+    margin: 0 auto; 
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px; 
+    /* Increased shadow for more depth */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    background-color: #ffffff; 
+    border-radius: 10px; /* Slightly larger border radius */
+    overflow: hidden; 
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #c0c0c0; /* Slightly darker border for definition */
+    /* Significant increase in cell padding for a roomier feel */
+    padding: 18px 25px; 
+    text-align: left;
+    font-size: 1.1rem; /* Larger font size for all text */
+}
+
+.data-table th {
+    background-color: #0056b3; /* Darker blue header for contrast */
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem; /* Header font even larger */
+    letter-spacing: 0.5px;
+}
+
+/* Base row styling */
+.data-table tr:nth-child(even) {
+    background-color: #eff3f8; /* Slightly more noticeable stripe */
+}
+
+.data-table tr:hover {
+    background-color: #dbe4ee; /* More distinct hover effect */
+    cursor: pointer;
+}
+
+/* STATUS STYLING - kept the colors consistent but bolded for impact */
+
+.data-table td.ok {
+    color: #1e7e34; /* Darker green */
+    background-color: #e6ffe9;
+    font-weight: bold;
+}
+
+.data-table td.warning {
+    color: #d39e00; /* Darker orange */
+    background-color: #fffde6;
+    font-weight: bold;
+}
+
+.data-table td.critical {
+    color: #c82333; /* Darker red */
+    background-color: #fcebeb;
+    font-weight: bold;
+}
+
+.data-table td.error {
+    color: #495057; /* Darker gray */
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
