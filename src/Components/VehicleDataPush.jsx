@@ -277,8 +277,7 @@ export default function VehicleDataPush() {
       <div>
         {apiResponse && apiResponse.length > 0 ? (
           <div className="table-page">
-            <h1>Vehicle Data</h1>
-
+<h1 style={{ textAlign: "center" }}>Vehicle Data</h1>
             <table className="data-table">
               <thead>
                 <tr>

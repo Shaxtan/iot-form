@@ -3,12 +3,18 @@
 .table-page {
     padding: 30px;
     /* Maximizing width to take up almost the full screen width */
-    max-width: 95%; 
+    max-width: 100%; 
     margin: 0 auto; 
+    /* CRITICAL FOR RESPONSIVENESS: Allows horizontal scrolling when table is wider than viewport */
+    overflow-x: auto; 
 }
 
 .data-table {
-    width: 100%;
+    /* REMOVED: width: 120%; -- This often causes issues. */
+    
+    /* INCREASED WIDTH: Set a large minimum width to force the desired size on big screens. */
+    min-width: 1200px; 
+    
     border-collapse: collapse;
     margin-top: 30px; 
     /* Increased shadow for more depth */
@@ -24,6 +30,17 @@
     padding: 18px 25px; 
     text-align: left;
     font-size: 1.1rem; /* Larger font size for all text */
+    white-space: nowrap; /* Keep content on one line by default */
+}
+
+/* Specific styling for long content (Request/Response) to allow wrapping */
+/* This is crucial for readability and to prevent excessive horizontal growth */
+.data-table td:nth-child(2), /* Request column */
+.data-table td:nth-child(3) { /* Response column */
+    white-space: normal;
+    word-break: break-word;
+    /* You can adjust max-width here if needed, but min-width: 1200px is driving the main width */
+    max-width: 400px; 
 }
 
 .data-table th {
@@ -71,3 +88,33 @@
     font-weight: bold;
 }
 
+/* RESPONSIVENESS */
+@media (max-width: 1024px) {
+    .data-table th, .data-table td {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-page {
+        padding: 15px;
+    }
+
+    .data-table {
+        font-size: 0.9rem;
+        /* Ensure min-width is still large enough to require scroll but not extreme */
+        min-width: 800px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .data-table {
+        min-width: 600px; /* Smallest minimum width for tiny screens */
+    }
+
+    .data-table th, .data-table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}

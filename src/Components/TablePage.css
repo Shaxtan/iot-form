@@ -1,10 +1,14 @@
+/* Base Container for Table */
 .table-page {
     padding: 30px;
     max-width: 95%; 
     margin: 0 auto; 
+    /* Important: Move overflow-x to a wrapper inside if you want the box-shadow to be visible during scroll, or keep it here and use padding/margin if the shadow isn't a concern. */
+    /* For this structure, keeping it here is fine, but we'll add a wrapper class in the React component for the best result. */
     overflow-x: auto; /* allows scrolling if table is wider than screen */
 }
 
+/* The actual table */
 .data-table {
     width: 100%; /* make table stretch full width */
     min-width: 800px; /* keep readability by preventing collapse */
@@ -13,15 +17,25 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
     background-color: #ffffff; 
     border-radius: 10px;
-    overflow: hidden; 
+    overflow: hidden; /* Important for rounding corners and clipping content */
 }
 
 /* Table cells */
 .data-table th, .data-table td {
     border: 1px solid #c0c0c0; 
-    padding: 14px 20px; /* slightly reduced padding for smaller screens */
+    padding: 14px 20px;
     text-align: left;
     font-size: 1rem;
+    white-space: nowrap; /* Keep content on one line by default */
+}
+
+/* **CRITICAL ADDITION FOR LONG CONTENT (Request/Response)** */
+/* Select the Request (2nd column) and Response (3rd column) */
+.data-table td:nth-child(2), 
+.data-table td:nth-child(3) {
+    white-space: normal; /* Allow text to wrap within the cell */
+    word-break: break-word; /* Force long strings to break */
+    max-width: 350px; /* Give it a maximum width before forcing a scroll */
 }
 
 /* Table header */
